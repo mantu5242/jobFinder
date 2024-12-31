@@ -1,0 +1,8 @@
+.homeMainBox1{
+    margin: 0 3% 0 3%;
+}
+.homeMainBox2{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}

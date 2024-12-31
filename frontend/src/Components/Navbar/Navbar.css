@@ -1,0 +1,56 @@
+.navbarMainBox1{
+    /* height: 10vh;
+    width: 50vw;
+    background-color: rgb(113, 117, 228);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    */
+    
+}
+
+.navbarMainBox2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: blue;
+    height: 10vh;
+    
+
+  }
+  
+  .navbarList {
+    display: flex;          /* Aligns list items horizontally */
+    gap: 20px;              /* Adds spacing between items */
+    list-style-type: none;  /* Removes bullet points */
+    padding: 0;
+    margin: 0;
+  }
+  
+  .navbarList li {
+    cursor: pointer;        /* Adds pointer on hover */
+  }
+
+  .navbarSearchBox{
+    height: 5vh;
+    width: 50vw;
+    border-radius: 15px;
+    border-color: rgb(197, 197, 197);
+    text-align: center;
+    margin: 0 1% 0 1%;
+  }
+
+  .navbarProfileBox{
+    display: flex;
+    
+  }
+
+  .navbarProfilePic{
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    justify-content: space-evenly;
+    background-color: rgb(230, 25, 25);
+    margin: 0 1% 0 2%;
+  }
