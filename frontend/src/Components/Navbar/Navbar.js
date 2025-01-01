@@ -1,7 +1,9 @@
 import React from 'react'
+import {Link, useNavigate} from 'react-router-dom'
 import "./Navbar.css"
 
 const Navbar = () => {
+    const navigate = useNavigate()
   return (
     <div className="<navbarMainBox1">
         <div className='navbarMainBox2'>
@@ -14,9 +16,9 @@ const Navbar = () => {
                 <input placeholder='search' className='navbarSearchBox'></input>
             </div>
             <div className='navbarProfilePic'></div>
-            <li style={
-                {listStyleType: "none"}
-            }>UserName</li>
+            <Link to = '/login'>
+                <li style={{listStyleType: "none"}}>Login </li>
+            </Link>
         </div>
     
     </div>

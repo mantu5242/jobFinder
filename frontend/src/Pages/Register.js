@@ -1,19 +1,24 @@
 import React , {useState}from 'react'
+import { useNavigate } from 'react-router-dom'
 import './Register.css'
 const Register = () => {
 
-
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({profilePic:null,username:'',email:'',phonenumber:'',password:''})
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
         console.log(formData);
         try{
-            const res = fetch('http://localhost:8000/api/auth/register',
+            const res = await fetch('http://localhost:8000/api/auth/register',
             {method: 'POST',
             headers: { 'content-type' : 'application/json'},
             body : JSON.stringify(formData),
             }
             )
+
+            if(res.ok){
+                navigate('/login')
+            }
         }
         catch(error){
             console.log("Error during Registration",error.message);

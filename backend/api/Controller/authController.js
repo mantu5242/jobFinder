@@ -1,6 +1,46 @@
 const userModel = require('../../Models/UserModel')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+require('dotenv').config();
+
+
+const loginController = async(req,res) => {
+    try{
+        // console.log(req.body);
+        const {email,password} = req.body;
+        const user = await userModel.findOne({email});
+        // console.log(user);
+        
+        if(!user){
+            return res.status(404).json({message:'user doesnot exit, create account',success:false});
+            console.log('user nhi mila')
+        }
+        console.log('user mil gya')
+        const isMatch = await bcrypt.compare(password, user.password);
+        if(!isMatch){
+            return res.status(400).json({message:'password is incorrect',success: false});
+        }
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
+
+        console.log(token);
+
+        res.cookie('token',token,{httpOnly:true, maxAge: 24 * 60 * 60 * 1000,}) ;
+
+        res.status(200).json({
+            status: "Success",
+            message: "Logged in Successfully",
+            success:true,
+            data: user,
+          });
+
+        
+    }
+    catch(error){
+        res.status(500).json({
+            message: error.message,
+          });
+    }
+}
 
 const registerController = async(req,res) => {
     try{
@@ -29,4 +69,4 @@ const registerController = async(req,res) => {
     }
 }
 
-module.exports = {registerController}
+module.exports = {registerController,loginController}
